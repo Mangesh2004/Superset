@@ -14,7 +14,6 @@ AUTH_TYPE = AUTH_DB
 AUTH_USER_REGISTRATION = True
 AUTH_USER_REGISTRATION_ROLE = "Admin"
 
-# Test reCAPTCHA keys (use your own in production)
 RECAPTCHA_PUBLIC_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 RECAPTCHA_PRIVATE_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 
@@ -37,8 +36,8 @@ OAUTH_PROVIDERS = {
         "icon": "fa-google",
         "display_name": "Google",
         "remote_app": {
-            "client_id": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
-            "client_secret": "YOUR_GOOGLE_CLIENT_SECRET",
+            "client_id": "170804927432-seob0n68j5a9crln00m3h8mfs8082m7u.apps.googleusercontent.com",
+            "client_secret": "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",
             "server_metadata_url": "https://accounts.google.com/.well-known/openid-configuration",
             "client_kwargs": {
                 "scope": "openid email profile"
@@ -58,7 +57,7 @@ FLASK_APP_MUTATOR = register_oauth_view
 # ===========================================
 
 # ✅ Use a secure, randomly-generated secret key in production
-SECRET_KEY = "CHANGE-THIS-TO-A-SECURE-RANDOM-SECRET-KEY-IN-PRODUCTION"
+SECRET_KEY = "bPFVrzKvoJQv1f7csGvwheKveJr/CvYxDF8tJM3nuVO5V5cn1y9eRKXs"
 
 # ✅ Set DB connection string (PostgreSQL)
 SQLALCHEMY_DATABASE_URI = "postgresql://superset:superset123@localhost:5432/superset"
