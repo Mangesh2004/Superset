@@ -14,6 +14,7 @@ AUTH_TYPE = AUTH_DB
 AUTH_USER_REGISTRATION = True
 AUTH_USER_REGISTRATION_ROLE = "Admin"
 
+# Test reCAPTCHA keys (use your own in production)
 RECAPTCHA_PUBLIC_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 RECAPTCHA_PRIVATE_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
 
@@ -57,7 +58,7 @@ FLASK_APP_MUTATOR = register_oauth_view
 # ===========================================
 
 # ✅ Use a secure, randomly-generated secret key in production
-SECRET_KEY = "bPFVrzKvoJQv1f7csGvwheKveJr/CvYxDF8tJM3nuVO5V5cn1y9eRKXs"
+SECRET_KEY = "CHANGE-THIS-TO-A-SECURE-RANDOM-SECRET-KEY-IN-PRODUCTION"
 
 # ✅ Set DB connection string (PostgreSQL)
 SQLALCHEMY_DATABASE_URI = "postgresql://superset:superset123@localhost:5432/superset"

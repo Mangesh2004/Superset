@@ -178,3 +178,16 @@ __pycache__/
 *.tar.gz
 *.tgz
 *.rar
+
+# Configuration files with sensitive data
+superset_config_hybrid_google.py
+superset_config_*.py
+*_config_*.py
+*.secret
+*.key
+*.pem
+*.p12
+*.pfx
+*.credentials
+.env*
+!.env.example
