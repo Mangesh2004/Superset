@@ -36,8 +36,8 @@ OAUTH_PROVIDERS = {
         "icon": "fa-google",
         "display_name": "Google",
         "remote_app": {
-            "client_id": "170804927432-seob0n68j5a9crln00m3h8mfs8082m7u.apps.googleusercontent.com",
-            "client_secret": "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",
+            "client_id": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+            "client_secret": "YOUR_GOOGLE_CLIENT_SECRET",
             "server_metadata_url": "https://accounts.google.com/.well-known/openid-configuration",
             "client_kwargs": {
                 "scope": "openid email profile"

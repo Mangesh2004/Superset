@@ -575,7 +575,7 @@ Currently OAuth2 needs to be configured at the DB engine spec level, ie, with on
 DATABASE_OAUTH2_CLIENTS = {
     "Google Sheets": {
         "id": "XXX.apps.googleusercontent.com",
-        "secret": "GOCSPX-YYY",
+        "secret": "YOUR_GOOGLE_CLIENT_SECRET",
         "scope": " ".join(
             [
                 "https://www.googleapis.com/auth/drive.readonly",
