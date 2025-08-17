@@ -41,6 +41,8 @@ except ImportError:
     OAuth = None
     AuthlibBaseError = Exception
     AUTHLIB_AVAILABLE = False
+if not AUTHLIB_AVAILABLE:
+    logger.error("Authlib is NOT available in the environment. OAuth will NOT be initialized.")
 
 
 class SimpleHybridAuthView(BaseSupersetView):

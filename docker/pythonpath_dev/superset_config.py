@@ -99,7 +99,62 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
+FEATURE_FLAGS = {
+    "ALERT_REPORTS": True,
+    "HORIZONTAL_FILTER_BAR": True,
+    "THUMBNAILS": True,
+    "LISTVIEWS_DEFAULT_CARD_VIEW": True,
+}
+
+# ===========================================
+# OAUTH CONFIGURATION FOR GOOGLE AUTHENTICATION
+# ===========================================
+logger.info("🔧 Setting up Google OAuth configuration")
+
+from flask_appbuilder.security.manager import AUTH_DB
+
+AUTH_TYPE = AUTH_DB
+AUTH_USER_REGISTRATION = True
+AUTH_USER_REGISTRATION_ROLE = "Admin"
+
+RECAPTCHA_PUBLIC_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+RECAPTCHA_PRIVATE_KEY = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+
+OAUTH_PROVIDERS = {
+    "google": {
+        "name": "google",
+        "icon": "fa-google",
+        "display_name": "Google",
+        "remote_app": {
+            "client_id": "170804927432-seob0n68j5a9crln00m3h8mfs8082m7u.apps.googleusercontent.com",
+            "client_secret": "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",
+            "server_metadata_url": "https://accounts.google.com/.well-known/openid-configuration",
+            "client_kwargs": {
+                "scope": "openid email profile"
+            }
+        }
+    }
+}
+
+logger.info(f"📧 OAUTH_PROVIDERS configured for Docker: {list(OAUTH_PROVIDERS.keys())}")
+
+def register_oauth_view(app):
+    logger.info("🔧 Registering SimpleHybridAuthView in Docker environment")
+    try:
+        from superset.views.simple_hybrid_auth import SimpleHybridAuthView
+        app.appbuilder.add_view_no_menu(SimpleHybridAuthView)
+        logger.info("✅ SimpleHybridAuthView registered successfully in Docker")
+    except Exception as e:
+        logger.error(f"❌ Failed to register SimpleHybridAuthView in Docker: {e}")
+        import traceback
+        logger.error(traceback.format_exc())
+
+FLASK_APP_MUTATOR = register_oauth_view
+
+# ===========================================
+# END OAUTH CONFIGURATION
+# ===========================================
+
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = f"http://superset_app{os.environ.get('SUPERSET_APP_ROOT', '/')}/"  # When using docker compose baseurl should be http://superset_nginx{ENV{BASEPATH}}/  # noqa: E501
 # The base URL for the email report hyperlinks.
