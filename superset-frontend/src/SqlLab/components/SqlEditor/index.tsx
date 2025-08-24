@@ -126,6 +126,7 @@ import EstimateQueryCostButton from '../EstimateQueryCostButton';
 import ShareSqlLabQuery from '../ShareSqlLabQuery';
 import SqlEditorLeftBar from '../SqlEditorLeftBar';
 import AceEditorWrapper from '../AceEditorWrapper';
+import AskAIBar from '../AskAIBar';
 import RunQueryActionButton from '../RunQueryActionButton';
 import QueryLimitSelect from '../QueryLimitSelect';
 import KeyboardShortcutButton, {
@@ -1007,6 +1008,16 @@ const SqlEditor: FC<Props> = ({
             />
           )}
           {queryEditor.isDataset && renderDatasetWarning()}
+          {isActive && (
+            <AskAIBar
+              isEnabled={isFeatureEnabled(FeatureFlag.AskAiInSqllab)}
+              databaseId={database?.id}
+              schema={queryEditor.schema}
+              onSQLReady={(sql: string) => {
+                setQueryEditorAndSaveSql(sql);
+              }}
+            />
+          )}
           {isActive && (
             <AceEditorWrapper
               autocomplete={autocompleteEnabled && !isTempId(queryEditor.id)}

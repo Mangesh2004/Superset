@@ -615,6 +615,8 @@ DEFAULT_FEATURE_FLAGS: dict[str, bool] = {
     "AG_GRID_TABLE_ENABLED": False,
     # Enable Table v2 time comparison feature
     "TABLE_V2_TIME_COMPARISON_ENABLED": False,
+    # Enable AI-powered SQL generation in SQL Lab
+    "ASK_AI_IN_SQLLAB": False,
 }
 
 # ------------------------------
@@ -639,6 +641,15 @@ SSH_TUNNEL_TIMEOUT_SEC = 10.0
 #: Timeout (seconds) for transport socket (``socket.settimeout``)
 SSH_TUNNEL_PACKET_TIMEOUT_SEC = 1.0
 
+# ------------------------------
+# AI SQL Configuration
+# ------------------------------
+# Maximum number of tables to include in AI context
+ASK_AI_MAX_TABLES = 8
+# Maximum number of columns per table to include in AI context
+ASK_AI_MAX_COLUMNS_PER_TABLE = 25
+# Maximum characters in total context sent to AI
+ASK_AI_CONTEXT_MAX_CHARS = 15000
 
 # Feature flags may also be set via 'SUPERSET_FEATURE_' prefixed environment vars.
 DEFAULT_FEATURE_FLAGS.update(
